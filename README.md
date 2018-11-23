@@ -33,4 +33,13 @@ Once this is done, we can clone the MHN code into the /opt directory, and run th
  cd mhn
  sudo ./install.sh
  ```
+Now that the script is running, towards the end it will ask if you want to run in debug mode, type "n". Then, enter a superuser email and password for the MHN application. After that, it will ask for some values. We just want the default values, so click "Enter" for each of them, and type "n" for using TLS and SSL for email. Once that part is done, it will ask you if you want to integrate with splunk and if you want to install ELK, type "n" for both. Now, our VM should be all set up and ready to use. However, we need to allow HTTP traffic for our VM. Visit console.cloud.google.com in your browser of choice, log in, on the left pane click "compute engine" and you will see your mhn-admin VM. Click on the title of it, allow HTTP traffic, and save your changes. Now, visit the external IP in a browser of your choice, but make sure the URL starts with HTTP, not HTTPS (we only allowed HTTP traffic.) You may log in using your superuser email and password you made earlier, and see what the UI looks like and what it offers.
  
+Create a MHN Honeypot VM
+-
+Now, it is time to deploy a honeypot! We will deploy the dionaea over HTTP honeypot, which is used to trap malware samples. We will need to create another VM for it. To do this, we will enter in two commands to configure our firewall and deploy the VM:
+```
+gcloud beta compute firewall-rules create mhn-allow-honeypot --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=all --source-ranges=0.0.0.0/0 --target-tags=mhn-honeypot
+gcloud compute instances create "mhn-honeypot-1" --machine-type "f1-micro" --subnet "default" --maintenance-policy "MIGRATE"  --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring.write","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --tags "mhn-honeypot","http-server" --image "ubuntu-1404-trusty-v20171010" --image-project "ubuntu-os-cloud" --boot-disk-size "10" --boot-disk-type "pd-standard" --boot-disk-device-name "mhn-honeypot-1"
+```
+Once this is done, SSH into your honeypot VM. To do this, enter the command ```gcloud compute ssh mhn-honeypot-1```. 
