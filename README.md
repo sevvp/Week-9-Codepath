@@ -43,3 +43,12 @@ gcloud beta compute firewall-rules create mhn-allow-honeypot --direction=INGRESS
 gcloud compute instances create "mhn-honeypot-1" --machine-type "f1-micro" --subnet "default" --maintenance-policy "MIGRATE"  --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring.write","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --tags "mhn-honeypot","http-server" --image "ubuntu-1404-trusty-v20171010" --image-project "ubuntu-os-cloud" --boot-disk-size "10" --boot-disk-type "pd-standard" --boot-disk-device-name "mhn-honeypot-1"
 ```
 Once this is done, SSH into your honeypot VM. To do this, enter the command ```gcloud compute ssh mhn-honeypot-1```. 
+
+Install the Honeypot Application
+-
+Now that we have our honeypot VM, we have to install a honeypot onto it. To do this, go back to your MHN dashboard, click "Deploy" at the top, and select the "Ubuntu - Dionaea with HTTP" script. Once you select it, you will see the deployment command below it. It starts with "wget." Copy this command, and run it in your honeypot VM terminal. Now, your honeypot is being installed. Once it is done, if you did everything correctly, you should be able to go back to your MHN dashboard, at the top click "sensors" then "view sensors" and see your honeypot listed.
+
+Testing the Honeypot with nmap
+-
+To test if the honeypot if working properly, we will use nmap to run a port scan on the honeypot's IP. To do this, run the command ```nmap {external IP of your honeypot}```
+You will see three ports open, and you can switch back to your MHN dashboard, click "attacks" on the top, and you will see your IP address along with several port scan records. This proves that the honeypot is working properly. MHN will continue gathering more attacks, they will be originating from all over the world.
