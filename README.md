@@ -8,7 +8,7 @@ In this assignment, I will be explaining the process of setting up multiple hone
 Getting Started: Downloading and installing the GCP SDK on your local machine
 -
 To get started, we will need to download and install the GCP SDK on our machine. using [this](https://cloud.google.com/sdk/install)
- link, we can download it, and after it is installed, we will initialize it so the region and zone are correct. To initialize it, run ```gcloud init```, then run the command ```gcloud init```. Set the appropriate region and zone for you depending on where you are located, then to confirm your settings, run the command ```gcloud config list```.
+ link, we can download it, and after it is installed, we will initialize it so the region and zone are correct. To initialize it, run the command ```gcloud init```. Set the appropriate region and zone for you depending on where you are located, then to confirm your settings, run the command ```gcloud config list```.
 
 ![Initializing](https://github.com/sevvp/Week-9-Codepath/blob/master/Initializing%20GCP%20SDK.gif)
 
@@ -35,6 +35,8 @@ Once this is done, we can clone the MHN code into the /opt directory, and run th
  cd mhn
  sudo ./install.sh
  ```
+NOTE: If you are having issues with this step, check out [this](https://github.com/threatstream/mhn/issues/521) github link that explains how to fix it.
+
 Now that the script is running, towards the end it will ask if you want to run in debug mode, type "n". Then, enter a superuser email and password for the MHN application. After that, it will ask for some values. We just want the default values, so click "Enter" for each of them, and type "n" for using TLS and SSL for email. Once that part is done, it will ask you if you want to integrate with splunk and if you want to install ELK, type "n" for both. Now, our VM should be all set up and ready to use. However, we need to allow HTTP traffic for our VM. Visit console.cloud.google.com in your browser of choice, log in, on the left pane click "compute engine" and you will see your mhn-admin VM. Click on the title of it, allow HTTP traffic, and save your changes. Now, visit the external IP in a browser of your choice, but make sure the URL starts with HTTP, not HTTPS (we only allowed HTTP traffic.) You may log in using your superuser email and password you made earlier, and see what the UI looks like and what it offers.
  
 Create a MHN Honeypot VM
