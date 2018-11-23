@@ -9,8 +9,10 @@ Getting Started: Downloading and installing the GCP SDK on your local machine
 -
 To get started, we will need to download and install the GCP SDK on our machine. using [this](https://cloud.google.com/sdk/install)
  link, we can download it, and after it is installed, we will initialize it so the region and zone are correct. To initialize it, run ```gcloud init```, then run the command ```gcloud init```. Set the appropriate region and zone for you depending on where you are located, then to confirm your settings, run the command ```gcloud config list```.
- 
- Creating the mhn-admin VM
+
+![Initializing](https://github.com/sevvp/Week-9-Codepath/blob/master/Initializing%20GCP%20SDK.gif)
+
+Creating the mhn-admin VM
  -
  In this step, we will deploy a virtual machine which will be used to host our honeypot. You will have to use Ubuntu, allow HTTP traffic, and have TCP ports 3000 and 10000 open. To do this, we will use gcloud commands. To create the firewall rule to allow ports 3000 and 1000, we will use the command 
  ```gcloud beta compute firewall-rules create mhn-allow-admin --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:3000,tcp:10000 --source-ranges=0.0.0.0/0 --target-tags=mhn-admin```. Once this is done, we will create the VM itself, titling it "mhn-admin."
