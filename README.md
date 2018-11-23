@@ -1,4 +1,4 @@
-# Week-9-Codepath
+# Week 9 Codepath Honeypot Deployment
 
 Honeypot Setup using Google Cloud Platform
 -
@@ -60,6 +60,7 @@ Results
 -
 After leaving two honeypots running for four days (dionaea and snort), I captured 17,000+ attacks. The attacks came in under many protocols, but the main ones that I saw were "pcap" (packet capture) and httpd. I got attacks from all around the world, and it seems that the majority of them are just attackers scanning for open and vulnerable ports on my honeypot. 
 ![Attacks](https://github.com/sevvp/Week-9-Codepath/blob/master/Attacks.png)
+![Payloads](https://github.com/sevvp/Week-9-Codepath/blob/master/Payloads.png)
 
 My session.json file:
 -
