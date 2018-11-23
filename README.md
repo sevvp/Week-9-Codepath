@@ -52,3 +52,8 @@ Testing the Honeypot with nmap
 -
 To test if the honeypot if working properly, we will use nmap to run a port scan on the honeypot's IP. To do this, run the command ```nmap {external IP of your honeypot}```
 You will see three ports open, and you can switch back to your MHN dashboard, click "attacks" on the top, and you will see your IP address along with several port scan records. This proves that the honeypot is working properly. MHN will continue gathering more attacks, they will be originating from all over the world.
+
+
+My session.json file:
+-
+[session.json](https://github.com/sevvp/Week-9-Codepath/blob/master/session.json)
