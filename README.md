@@ -54,7 +54,12 @@ Testing the Honeypot with nmap
 -
 To test if the honeypot if working properly, we will use nmap to run a port scan on the honeypot's IP. To do this, run the command ```nmap {external IP of your honeypot}```
 You will see three ports open, and you can switch back to your MHN dashboard, click "attacks" on the top, and you will see your IP address along with several port scan records. This proves that the honeypot is working properly. MHN will continue gathering more attacks, they will be originating from all over the world.
+![nmap](https://github.com/sevvp/Week-9-Codepath/blob/master/nmap%20Scan.gif)
 
+Results
+-
+After leaving two honeypots running for four days (dionaea and snort), I captured 17,000+ attacks. The attacks came in under many protocols, but the main ones that I saw were "pcap" (packet capture) and httpd. I got attacks from all around the world, and it seems that the majority of them are just attackers scanning for open and vulnerable ports on my honeypot. 
+![Attacks](https://github.com/sevvp/Week-9-Codepath/blob/master/Attacks.png)
 
 My session.json file:
 -
